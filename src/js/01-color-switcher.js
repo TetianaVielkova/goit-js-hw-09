@@ -20,11 +20,15 @@ function changeBGColor() {
         document.body.style.backgroundColor = getRandomHexColor();
     }, 1000)
     startBtn.disabled = true;
+    stopBtn.disabled = false;
+    
 }
 
 
 function intervalDelete() {
     clearInterval(intervalID);
-    stopBtn.disabled = false;
+    stopBtn.disabled = true;
+    startBtn.disabled = false;
+    
 }
 
