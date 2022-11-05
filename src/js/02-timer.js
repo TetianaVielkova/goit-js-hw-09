@@ -81,8 +81,10 @@ function updateClock({ days, hours, minutes, seconds }) {
 
 
 const flatpickrTimer = flatpickr(timerInput, options);
-Style();
-function Style () {
+
+
+
+
     timerStyle.style.display = 'flex';
     timerStyle.style.marginTop = '75px';
 
@@ -96,5 +98,5 @@ function Style () {
     element.style.padding = '20px';
     element.style.outline = '2px solid #212121';
 });
-}
+
 
