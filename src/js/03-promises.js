@@ -1,34 +1,34 @@
 import Notiflix from 'notiflix';
 
-const form = document.querySelector('.form');
-const delay = document.querySelector("[name = 'delay']");
-const  step = document.querySelector("[name = 'step']");
-const  amount = document.querySelector("[name = 'amount']");
+const refs = {
+  delay: document.querySelector("[name = 'delay']"),
+  step: document.querySelector("[name = 'step']"),
+  amount: document.querySelector("[name = 'amount']"),
+  form: document.querySelector('.form'),
+};
 
-
-form.addEventListener('submit', onSubmit);
+refs.form.addEventListener('submit', onSubmit);
 
 
 function onSubmit() {
-  e.preventDefault();
-  let delayValue = Number(delay.value);
-  const stepValue = Number(step.value);
-  const amountValue = Number(amount.value);
+  event.preventDefault();
+  let firstDelay = Number(refs.delay.value);
+  const step = Number(refs.step.value);
+  const amount = Number(refs.amount.value);
 
-
-  for (let position = 1; position <= amountValue; position += 1) {
-    createPromise(position, delayValue)
+  for (let i = 1; i <= amount; i += 1) {
+    createPromise(i, firstDelay)
       .then(({ position, delay }) => {
-        Notiflix.Notify.failure(
+        Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
       })
       .catch(({ position, delay }) => {
-        Notiflix.Notify.success(
+        Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
-      delayValue += stepValue;
+    firstDelay += step;
   }
 }
 
